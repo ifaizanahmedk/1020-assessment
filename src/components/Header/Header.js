@@ -1,14 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { NAV_LINKS } from "./constants";
 import { MenuIcon, CloseIcon, ArrowRightIcon } from "../../assets/js/Icons";
-
-const navLinks = [
-	{ label: "About", href: "#about" },
-	{ label: "News", href: "#news" },
-	{ label: "Services", href: "#services" },
-	{ label: "Our Team", href: "#team" },
-	{ label: "Make Enquiry", href: "#enquiry" },
-];
 
 export const Header = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -25,16 +18,15 @@ export const Header = () => {
 
 	return (
 		<nav
-			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 lg:mt-[21px] ${
 				isScrolled
 					? "bg-background/95 backdrop-blur-md shadow-sm"
 					: "bg-background"
 			}`}>
-			<div className="container mx-auto px-4 lg:px-8">
-				<div className="flex items-center justify-between h-16 lg:h-20">
-					{/* Desktop Navigation */}
+			<div className="container mx-auto lg:px-5">
+				<div className="flex items-center justify-between h-20 lg:h-25 p-4 lg:p-8">
 					<div className="hidden lg:flex items-center gap-8">
-						{navLinks.map((link) => (
+						{NAV_LINKS.map((link) => (
 							<a
 								key={link.label}
 								href={link.href}
@@ -44,15 +36,14 @@ export const Header = () => {
 						))}
 					</div>
 
-					{/* Contact Button */}
-					<button className="hidden lg:inline-flex items-center gap-2 px-4 py-2 border border-foreground/20 rounded-md hover:border-foreground/40 hover:bg-transparent transition-colors text-sm font-medium">
+					<button className="hidden lg:flex items-center gap-2 px-4 py-2 border border-foreground/20 hover:border-foreground/40 hover:bg-transparent transition-colors text-sm font-medium">
 						Contact us
 						<ArrowRightIcon />
 					</button>
 
 					{/* Mobile Menu Button & Contact */}
-					<div className="lg:hidden flex items-center gap-4 ml-auto">
-						<button className="inline-flex items-center gap-2 px-3 py-1.5 text-sm border border-foreground/20 rounded-md hover:border-foreground/40 hover:bg-transparent transition-colors">
+					<div className="lg:hidden flex items-center justify-between gap-4 w-full">
+						<button className="inline-flex items-center gap-4 px-4 py-2 text-sm border border-foreground/20 hover:border-foreground/40 hover:bg-transparent transition-colors">
 							Contact us
 							<ArrowRightIcon />
 						</button>
@@ -60,7 +51,7 @@ export const Header = () => {
 							onClick={() =>
 								setIsMobileMenuOpen(!isMobileMenuOpen)
 							}
-							className="p-2 text-foreground"
+							className="p-2 text-foreground bg-secondary"
 							aria-label="Toggle menu">
 							{isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
 						</button>
@@ -69,8 +60,8 @@ export const Header = () => {
 
 				{/* Mobile Menu */}
 				{isMobileMenuOpen && (
-					<div className="lg:hidden border-t border-border/20 py-4 animate-fade-in">
-						{navLinks.map((link) => (
+					<div className="lg:hidden border-t border-border/20 px-4 py-4 animate-fade-in">
+						{NAV_LINKS.map((link) => (
 							<a
 								key={link.label}
 								href={link.href}

@@ -20,9 +20,16 @@ module.exports = {
 				test: /\.css$/,
 				use: ["style-loader", "css-loader", "postcss-loader"],
 			},
+			{
+				test: /\.(png|jpe?g|gif|svg|webp)$/i,
+				type: 'asset/resource',
+			},
 		],
 	},
 	resolve: {
+		alias: {
+			'@': path.resolve(__dirname, 'src'), 
+		},
 		extensions: [".js", ".jsx"],
 	},
 	plugins: [

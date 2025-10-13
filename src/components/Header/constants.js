@@ -1,18 +1,7 @@
 export const NAV_LINKS = [
-	{
-		title: "Links",
-		route: "",
-	},
-	{
-		title: "Appearance",
-		route: "",
-	},
-	{
-		title: "Analytics",
-		route: "",
-	},
-	{
-		title: "Settings",
-		route: "",
-	},
+	{ label: "About", href: "#about" },
+	{ label: "News", href: "#news" },
+	{ label: "Services", href: "#services" },
+	{ label: "Our Team", href: "#team" },
+	{ label: "Make Enquiry", href: "#enquiry" },
 ];
