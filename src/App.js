@@ -8,7 +8,7 @@ const App = () => {
 		<div className="min-h-screen">
 			<Header />
 			<main>
-				{/* <Hero /> */}
+				<Hero />
 				<QualityProducts />
 			</main>
 		</div>

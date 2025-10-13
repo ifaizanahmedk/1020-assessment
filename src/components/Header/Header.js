@@ -18,12 +18,13 @@ export const Header = () => {
 
 	return (
 		<nav
-			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 lg:mt-[21px] ${
-				isScrolled
-					? "bg-background/95 backdrop-blur-md shadow-sm"
-					: "bg-background"
-			}`}>
-			<div className="container mx-auto lg:px-5">
+			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 lg:mt-[21px]`}>
+			<div
+				className={`container mx-auto lg:px-5 ${
+					isScrolled
+						? "bg-white/95 backdrop-blur-md shadow-sm"
+						: "bg-white"
+				}`}>
 				<div className="flex items-center justify-between h-20 lg:h-25 p-4 lg:p-8">
 					<div className="hidden lg:flex items-center gap-8">
 						{NAV_LINKS.map((link) => (
@@ -58,7 +59,6 @@ export const Header = () => {
 					</div>
 				</div>
 
-				{/* Mobile Menu */}
 				{isMobileMenuOpen && (
 					<div className="lg:hidden border-t border-border/20 px-4 py-4 animate-fade-in">
 						{NAV_LINKS.map((link) => (

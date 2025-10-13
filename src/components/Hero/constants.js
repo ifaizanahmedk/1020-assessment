@@ -1,22 +1,35 @@
-export const SLIDE_DATA = [
-    {
-        type: 'image',
-        src: 'https://images.unsplash.com/photo-1555229189-b73534307942?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        alt: 'Abstract image'
-    },
-    {
-        type: 'video',
-        src: 'https://videos.pexels.com/video-files/4354243/4354243-uhd_2560_1440_25fps.mp4',
-        poster: ''
-    },
-    {
-        type: 'image',
-        src: 'https://images.unsplash.com/photo-1541188903310-8e078edbcaf6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        alt: 'Mountain landscape'
-    },
-    {
-        type: 'video',
-        src: 'https://videos.pexels.com/video-files/5495781/5495781-uhd_2560_1080_30fps.mp4',
-        poster: ''
-    },
+import heroSlide1 from "@/assets/images/hero-slide.jpg";
+import heroSlide2 from "@/assets/images/hero-slide-2.jpg";
+import heroSlide3 from "@/assets/images/hero-slide-3.jpg";
+import heroSlide4 from "@/assets/images/hero-slide-4.jpg";
+
+export const SLIDES = [
+	{
+		id: 1,
+		image: heroSlide1,
+		alt: "TenTwenty Farms",
+		subtitle: "Welcome To TenTwenty Farms",
+		title: ["From Our Farms", "To Your Hands"],
+	},
+	{
+		id: 2,
+		image: heroSlide2,
+		alt: "Lorem Ipsum",
+		subtitle: "Lorem Ipsum",
+		title: ["Lorem ipsum dolor sit amet"],
+	},
+	{
+		id: 3,
+		image: heroSlide3,
+		alt: "Lorem Ipsum",
+		subtitle: "consectetur adipiscing elit",
+		title: ["consectetur adipiscing elit, sed do eiusmod tempor"],
+	},
+	{
+		id: 4,
+		image: heroSlide4,
+		alt: "Ut enim ad minim ",
+		subtitle: "Ut enim ad minim ",
+		title: ["Ut enim ad minim veniam, quis nostrud exercitation "],
+	},
 ];
