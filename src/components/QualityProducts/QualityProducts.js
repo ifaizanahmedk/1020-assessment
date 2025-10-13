@@ -1,19 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { EffectCreative, Navigation } from "swiper/modules";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import product1 from '@/assets/images/product-1.png';
-import product2 from '@/assets/images/product-1.png';
-import product3 from '@/assets/images/product-1.png';
+
+import { PRODUCTS } from './constants';
+
+import "swiper/css";
+import "swiper/css/effect-creative";
+import './styles.css'
 
 gsap.registerPlugin(ScrollTrigger);
-
-const products = [
-  { id: 1, image: product1, title: 'Client 1', location: 'Dubai, United Arab Emirates' },
-  { id: 2, image: product2, title: 'Client 2', location: 'Mumbai, India' },
-  { id: 3, image: product3, title: 'Client 3', location: 'London, United Kingdom' },
-];
 
 const QualityProducts = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
@@ -65,10 +62,9 @@ const QualityProducts = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-20 lg:py-32 px-4 bg-secondary">
-      <div className="max-w-7xl mx-auto">
-        {/* Title and Description */}
-        <div className="text-center mb-16 lg:mb-24">
+    <section ref={sectionRef} className="relative py-20 lg:py-32 bg-secondary">
+      <div className="mx-auto">
+        <div className="max-w-7xl text-center mx-auto mb-16 lg:mb-24 ">
           <h2 ref={titleRef} className="text-4xl lg:text-6xl font-bold text-foreground mb-6">
             Quality Products
           </h2>
@@ -82,31 +78,43 @@ const QualityProducts = () => {
           </p>
         </div>
 
-        {/* Swiper Slider */}
         <div className="relative h-[500px] lg:h-[700px] flex items-center justify-center overflow-hidden">
           <Swiper
-            modules={[EffectCoverflow, Pagination]}
-            effect="coverflow"
+            // modules={[EffectCreative]}
+            // effect="creative"
             grabCursor={true}
             centeredSlides={true}
             slidesPerView="auto"
-            coverflowEffect={{
-              rotate: 10,
-              stretch: 0,
-              depth: 200,
-              modifier: 1,
-              slideShadows: false,
-            }}
-            pagination={{ clickable: true }}
+            initialSlide={1}
+            spaceBetween={125}
+            // coverflowEffect={{
+            //   rotate: 0,
+            //   stretch: 0,
+            //   depth: 200,
+            //   modifier: 1,
+            //   slideShadows: false,
+            // }}
+            // creativeEffect={{
+            //   prev: {
+            //     shadow: false,
+            //     translate: ["-120%", 0, -500],
+            //     rotate: [0, 0, -30], // Tilt left (Z-axis)
+            //   },
+            //   next: {
+            //     shadow: false,
+            //     translate: ["120%", 0, -500],
+            //     rotate: [0, 0, 30], // Tilt right (Z-axis)
+            //   },
+            // }}
+            pagination={false}
             onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex)}
-            className="w-full max-w-5xl"
+            className="w-full quality-swiper"
           >
-            {products.map((product, index) => (
+            {PRODUCTS.map((product, index) => (
               <SwiperSlide key={product.id} className="!w-[250px] lg:!w-[350px]">
                 <div
-                  className={`relative w-full h-[350px] lg:h-[500px] rounded-lg overflow-hidden shadow-2xl transition-all duration-500 ${
-                    index === currentIndex ? 'scale-100' : 'scale-90 opacity-80'
-                  }`}
+                  className={`relative w-full h-[350px] lg:h-[500px] overflow-hidden transition-all duration-500 ${index === currentIndex ? 'scale-100' : 'scale-90 opacity-80'
+                    }`}
                 >
                   <img src={product.image} alt={product.title} className="w-full h-full object-cover" draggable={false} />
                 </div>
@@ -115,13 +123,12 @@ const QualityProducts = () => {
           </Swiper>
         </div>
 
-        {/* Slide Info */}
         <div className="text-center mt-12 lg:mt-16">
           <h3 className="text-2xl lg:text-3xl font-bold text-foreground mb-2">
-            {products[currentIndex].title}
+            {PRODUCTS[currentIndex].title}
           </h3>
           <p className="text-muted-foreground text-sm lg:text-base">
-            {products[currentIndex].location}
+            {PRODUCTS[currentIndex].location}
           </p>
         </div>
       </div>
