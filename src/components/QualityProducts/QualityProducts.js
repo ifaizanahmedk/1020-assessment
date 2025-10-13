@@ -17,9 +17,10 @@ const QualityProducts = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const descRef = useRef(null);
+  const cursorRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
-    // Animate Title
     if (titleRef.current) {
       gsap.fromTo(
         titleRef.current,
@@ -39,7 +40,6 @@ const QualityProducts = () => {
       );
     }
 
-    // Animate Description
     if (descRef.current) {
       gsap.fromTo(
         descRef.current,
@@ -61,6 +61,37 @@ const QualityProducts = () => {
     }
   }, []);
 
+
+  useEffect(() => {
+    const moveCursor = (e) => {
+      const cursor = cursorRef.current;
+      if (cursor) {
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+      }
+    };
+
+    const handleDown = (e) => {
+      setIsDragging(true);
+      moveCursor(e);
+    };
+
+    const handleUp = () => setIsDragging(false);
+
+    document.addEventListener('pointermove', moveCursor);
+    document.addEventListener('pointerdown', handleDown);
+    document.addEventListener('pointerup', handleUp);
+    document.addEventListener('dragstart', (e) => e.preventDefault());
+
+    return () => {
+      document.removeEventListener('pointermove', moveCursor);
+      document.removeEventListener('pointerdown', handleDown);
+      document.removeEventListener('pointerup', handleUp);
+      document.removeEventListener('dragstart', (e) => e.preventDefault());
+    };
+  }, []);
+
+
   return (
     <section ref={sectionRef} className="relative py-20 lg:py-32 bg-secondary">
       <div className="mx-auto">
@@ -79,6 +110,8 @@ const QualityProducts = () => {
         </div>
 
         <div className="relative h-[500px] lg:h-[700px] flex items-center justify-center overflow-hidden">
+          <div className={`custom-cursor ${isDragging ? 'grabbing' : 'grab'} fixed z-50 pointer-events-none`}
+            ref={cursorRef}>Drag</div>
           <Swiper
             // modules={[EffectCreative]}
             // effect="creative"
