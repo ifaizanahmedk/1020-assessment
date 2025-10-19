@@ -1,0 +1,32 @@
+.slide-half-top,
+.slide-half-bottom {
+  /* height: 450px; */
+  /* display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  transition: transform 0.8s ease-out;
+  overflow: hidden; */
+  /* filter: grayscale(2) contrast(2.5); */
+}
+
+.slide-half-bottom {
+  /* align-items: flex-end;
+  bottom: 0;
+  top: auto; */
+}
+
+.slide-half-top-img,
+.slide-half-bottom-img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+}
+
+.slide-half-bottom-img {
+  background-position: center -450px;
+}
+
+.swiper-slide {
+  opacity: 1 1 !important;
+}

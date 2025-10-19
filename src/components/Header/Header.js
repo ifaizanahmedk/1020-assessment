@@ -31,20 +31,20 @@ export const Header = () => {
 							<a
 								key={link.label}
 								href={link.href}
-								className="text-sm font-medium text-nav-text hover:text-primary transition-colors">
+								className="font-normal text-[14px] leading-[1.4] text-black">
 								{link.label}
 							</a>
 						))}
 					</div>
 
-					<button className="hidden lg:flex items-center gap-2 px-4 py-2 border border-foreground/20 hover:border-foreground/40 hover:bg-transparent transition-colors text-sm font-medium">
+					<button className="hidden lg:flex items-center gap-2 px-4 py-2 font-normal text-[16px] leading-[1.1] text-foreground border border-foreground/20 hover:border-foreground/40 hover:bg-transparent transition-colors text-sm font-medium">
 						Contact us
 						<ArrowRightIcon />
 					</button>
 
 					{/* Mobile Menu Button & Contact */}
 					<div className="lg:hidden flex items-center justify-between gap-4 w-full">
-						<button className="inline-flex items-center gap-4 px-4 py-2 text-sm border border-foreground/20 hover:border-foreground/40 hover:bg-transparent transition-colors">
+						<button className="inline-flex items-center gap-4 px-4 py-2 text-sm font-normal text-[16px] leading-[1.1] text-foreground border border-foreground/20 hover:border-foreground/40 hover:bg-transparent transition-colors">
 							Contact us
 							<ArrowRightIcon />
 						</button>

@@ -7,7 +7,7 @@ module.exports = {
 	output: {
 		filename: "bundle.js",
 		path: path.resolve(__dirname, "dist"),
-		clean: true,
+		// clean: true,
 	},
 	module: {
 		rules: [
@@ -22,19 +22,90 @@ module.exports = {
 			},
 			{
 				test: /\.(png|jpe?g|gif|svg|webp)$/i,
-				type: 'asset/resource',
+				type: "asset/resource",
 			},
 		],
 	},
 	resolve: {
 		alias: {
-			'@': path.resolve(__dirname, 'src'), 
+			"@": path.resolve(__dirname, "src"),
 		},
 		extensions: [".js", ".jsx"],
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: "./public/index.html",
+			filename: "index.html",
+			meta: {
+				charset: { charset: "UTF-8" },
+				"http-equiv": {
+					"X-UA-Compatible": "IE=edge",
+					"Content-Type": "text/html; charset=UTF-8",
+				},
+				viewport: {
+					name: "viewport",
+					content: "width=device-width, initial-scale=1.0",
+				},
+				description: {
+					name: "description",
+					content: "Lorem ipsum dolor sit",
+				},
+				author: {
+					name: "author",
+					content: "1020 Assessment - Faizan Ahmed",
+				},
+				keywords: {
+					name: "keywords",
+					content: "Lorem, ipsum, dolor, sit",
+				},
+				canonical: {
+					rel: "canonical",
+					href: "https://tentwenty.me",
+				},
+				"og:type": {
+					property: "og:type",
+					content: "website",
+				},
+				"og:title": {
+					property: "og:title",
+					content: "Lorem ipsum dolor sit",
+				},
+				"og:description": {
+					property: "og:description",
+					content: "Lorem ipsum dolor sit",
+				},
+				"og:image": {
+					property: "og:image",
+					content: "",
+				},
+				"og:url": {
+					property: "og:url",
+					content: "https://tentwenty.me",
+				},
+				"twitter:card": {
+					name: "twitter:card",
+					content: "summary_large_image",
+				},
+				"twitter:site": {
+					name: "twitter:site",
+					content: "@faizanahmedraza",
+				},
+				"twitter:title": {
+					name: "twitter:title",
+					content: "1020 Assessment - Faizan Ahmed",
+				},
+				"twitter:description": {
+					name: "twitter:description",
+					content: "Lorem ipsum dolor sit",
+				},
+				"twitter:image": {
+					name: "twitter:image",
+					content: "",
+				},
+			},
+			inject: {
+				body: true,
+			},
 		}),
 	],
 	devServer: {
